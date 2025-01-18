@@ -3,6 +3,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Box, Typography } from "@mui/material";
 import { blue, green, yellow, red } from "@mui/material/colors";
 import React from "react";
+import ScienceIcon from "@mui/icons-material/Science";
+import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 
 const darkTheme = createTheme({
   palette: {
@@ -10,25 +12,29 @@ const darkTheme = createTheme({
   },
 });
 
-const colors = [blue[600], green[600], yellow[800], red[400]];
+const colors = [blue[600], green[600], yellow[800], red[600]];
+const labels = ["科学", "文化"];
 
 export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      {colors.map((color) => (
-        <Box
-          key={color}
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
-          <Counter color={color} label="科学点" />
-          <Counter color={color} label="文化点" />
-        </Box>
-      ))}
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        {colors.map((color) => (
+          <Box
+            key={color}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              pl: 1,
+            }}
+          >
+            {labels.map((label) => (
+              <Counter key={label} color={color} label={label} />
+            ))}
+          </Box>
+        ))}
+      </Box>
     </ThemeProvider>
   );
 }
@@ -52,30 +58,41 @@ const Counter = ({ color, label }: { color: string; label: string }) => {
       onClick={handleClick}
       sx={{
         p: 2,
-        m: 2,
+        m: 1,
         width: "45%",
         height: "22vh",
         bgcolor: color,
         borderRadius: 2,
         touchAction: "none",
+        position: "relative",
         display: "flex",
-        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
-      <Typography variant="h4">{label}</Typography>
-      <Box
+      {/*<Box sx={{ fontsize: 16, display: "fix" }}>{label}</Box>*/}
+      <Typography
+        variant="h5"
         sx={{
-          m: 3,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
+          position: "absolute",
+          top: 12,
+          left: 12,
+          verticalAlign: "bottom",
+          fontWeight: "bold",
         }}
       >
-        <Typography variant="h4">ー</Typography>
-        <Typography variant="h1">{count}</Typography>
-        <Typography variant="h4">＋</Typography>
+        {label === "科学" ? (
+          <ScienceIcon sx={{ transform: "scale(1.5)", mr: 1 }} />
+        ) : (
+          <LocalFloristIcon sx={{ transform: "scale(1.5)", mr: 1 }} />
+        )}
+        {label}
+      </Typography>
+      <Typography variant="h6">ー</Typography>
+      <Box sx={{ typography: "h1", fontWeight: "bold", fontSize: "16vh" }}>
+        {count}
       </Box>
+      <Typography variant="h6">＋</Typography>
     </Box>
   );
 };
