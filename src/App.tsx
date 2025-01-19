@@ -19,14 +19,21 @@ export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100vh",
+          justifyContent: "center",
+        }}
+      >
         {colors.map((color) => (
           <Box
             key={color}
             sx={{
               display: "flex",
               flexDirection: "row",
-              pl: 1,
+              justifyContent: "center",
             }}
           >
             {labels.map((label) => (
