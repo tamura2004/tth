@@ -8,6 +8,7 @@ export const useScore = () => {
     [Category.TechnologyLevel]: 0,
     [Category.GovernmentLevel]: 0,
     [Category.Science]: 1,
+    [Category.SciencePoint]: 0,
     [Category.Military]: 1,
     [Category.Happiness]: 0,
     [Category.FoodProduction]: 2,
