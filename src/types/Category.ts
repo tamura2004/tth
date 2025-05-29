@@ -1,5 +1,6 @@
 export const Category = {
   Science: "科学力",
+  SciencePoint: "科学点",
   Military: "軍事力",
   Happiness: "幸福力",
   FoodProduction: "食料算出量",
@@ -15,6 +16,8 @@ export type Category = (typeof Category)[keyof typeof Category];
 
 export const getScoreMultiplier = (category: Category): number => {
   switch (category) {
+    case Category.SciencePoint:
+      return 0;
     case Category.TechnologyLevel:
     case Category.Science:
     case Category.Military:

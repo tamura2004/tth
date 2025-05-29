@@ -26,7 +26,7 @@ export const ScorePage = () => {
           </Box>
         </ScoreCard>
       ))}
-      <ScoreCard label="勝利点合計" size={8}>
+      <ScoreCard label="勝利点合計" size={4}>
         <Box sx={{ typography: "h1", fontWeight: "bold" }}>{totalScore}</Box>
       </ScoreCard>
     </Grid>

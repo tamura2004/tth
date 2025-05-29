@@ -1,6 +1,7 @@
 import { Box, Chip, Grid } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { blue, green } from "@mui/material/colors";
 import { ReactNode } from "react";
+import { Category } from "../types/Category";
 
 type Props = {
   children: ReactNode;
@@ -24,7 +25,7 @@ export const ScoreCard = ({ children, label, size, addScore, chip }: Props) => {
     <Grid
       size={size}
       sx={{
-        bgcolor: blue[500],
+        bgcolor: label === Category.SciencePoint ? green[500] : blue[500],
         borderRadius: 2,
         touchAction: "none",
         p: 1,
